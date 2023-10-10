@@ -5,6 +5,7 @@ import { LoginComponent } from "./auth/login/login.component";
 import { RegisterComponent } from "./auth/register/register.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { routesChildren } from "./dashboard/dashboard.routes";
+import { authGuard } from "./services/auth.guard";
 
 export const routes: Routes = [
   {
@@ -12,7 +13,8 @@ export const routes: Routes = [
 },
   {path:'register',component:RegisterComponent},
   {
-    path:'',component:DashboardComponent,children:routesChildren
+    path:'',component:DashboardComponent,children:routesChildren,
+    canActivate:[authGuard]
   },
   {
     path:"**",redirectTo:''
