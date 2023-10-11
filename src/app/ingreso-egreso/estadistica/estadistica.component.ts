@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { IngresoEgreso } from 'src/app/models/ingreso-egreso.model';
-import { AppState } from 'src/app/store/reducers/app.reducer';
+
 
 
 import DatalabelsPlugin from 'chartjs-plugin-datalabels';
 import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
-import { BaseChartDirective } from 'ng2-charts';
+import { AppStateWithIngreso } from 'src/app/store/reducers/ingreso-egreso.reducer';
 
 @Component({
   selector: 'app-estadistica',
@@ -45,7 +45,7 @@ export class EstadisticaComponent implements OnInit {
     ],
   };
   public pieChartType: ChartType = 'pie';
-constructor(private store:Store<AppState>){
+constructor(private store:Store<AppStateWithIngreso>){
 
 }
   ngOnInit(): void {

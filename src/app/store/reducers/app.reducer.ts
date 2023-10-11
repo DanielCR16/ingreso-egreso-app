@@ -6,7 +6,7 @@ import * as igeg  from './ingreso-egreso.reducer';
 export interface AppState {
    ui:ui.State,
    user:auth.State,
-   ingreso_egreso:igeg.State
+   //ingreso_egreso:igeg.State
 }
 
 
@@ -14,5 +14,5 @@ export interface AppState {
 export const appReducers: ActionReducerMap<AppState> = {
    ui: ui.uiReducer,
    user:auth.authReducer,
-   ingreso_egreso:igeg.ingresoEgresoReducer
+   //ingreso_egreso:igeg.ingresoEgresoReducer
 }
