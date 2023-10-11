@@ -7,11 +7,11 @@
             Especifique el monto y el tipo
           </p>
 
-          <form>
+          <form [formGroup]="formEgresoIngreso" (ngSubmit)="guardar()">
 
             <div class="form-group">
               <label>Descripción</label>
-              <input type="text"
+              <input formControlName="descripcion" type="text"
                      class="form-control"
                      placeholder="Descripción"
                      name="descripcion">
@@ -19,7 +19,7 @@
 
             <div class="form-group">
                 <label>Monto</label>
-                <input type="number"
+                <input formControlName="monto" type="number"
                        class="form-control"
                        placeholder="Monto"
                        name="monto">
@@ -31,16 +31,21 @@
             <div class="form-group">
                 <label>Tipo</label>
                 <br>
-                <button type="button" class="btn btn-primary btn-block">Ingreso</button>
-                <!-- <button type="button" class="btn btn-warning btn-block">Egreso</button> -->
+                <button *ngIf="tipo==='ingreso'" (click)="tipo='egreso'"  type="button" class="btn btn-primary btn-block">Ingreso</button>
+                 <button *ngIf="tipo==='egreso'" (click)="tipo='ingreso'" type="button" class="btn btn-warning btn-block">Egreso</button>
             </div>
 
             <hr>
-            <button type="button" class="btn btn-success mr-2">
-              <i class="fa fa-save"></i>
+            <button *ngIf="!isLoading" [disabled]="formEgresoIngreso.invalid" type="submit" class="btn btn-success mr-2">
+              <i  class="fa fa-save"></i>
+
               Agregar
             </button>
+            <button *ngIf="isLoading" [disabled]="true" type="submit" class="btn btn-success mr-2">
 
+              <i  class="fa fa-spin fa-sync"></i>
+              Guardando...
+            </button>
             <!--
               <button disabled class="btn btn-success mr-2">
                 <i class="fa fa-spin fa-sync"></i>
